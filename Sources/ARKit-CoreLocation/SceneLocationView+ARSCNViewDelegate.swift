@@ -106,7 +106,7 @@ extension SceneLocationView {
 @available(iOS 11.0, *)
 extension SceneLocationView {
 
-    public func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
+    public func renderer_hack(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
         defer {
             arViewDelegate?.renderer?(renderer, didRenderScene: scene, atTime: time)
         }
