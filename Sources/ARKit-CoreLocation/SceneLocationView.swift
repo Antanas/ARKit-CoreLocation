@@ -79,6 +79,12 @@ open class SceneLocationView: ARSCNView {
             locationNodes.forEach { $0.locationEstimateMethod = newValue }
         }
     }
+	
+    public var locationAccuracy: CLLocationAccuracy = kCLLocationAccuracyBestForNavigation {
+        didSet {
+            sceneLocationManager.locationManager.locationManager?.desiredAccuracy = locationAccuracy
+        }
+    }
 
     /// When set to true, displays an axes node at the start of the scene
     public var showAxesNode = false
