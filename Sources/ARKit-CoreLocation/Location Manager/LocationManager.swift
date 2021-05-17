@@ -31,7 +31,7 @@ extension LocationManagerDelegate {
 public class LocationManager: NSObject {
     weak var delegate: LocationManagerDelegate?
 
-    private var locationManager: CLLocationManager?
+    var locationManager: CLLocationManager?
 
     var currentLocation: CLLocation?
 
