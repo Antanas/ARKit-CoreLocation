@@ -161,8 +161,8 @@ open class SceneLocationView: ARSCNView {
 
         debugOptions = showFeaturePoints ? [ARSCNDebugOptions.showFeaturePoints] : debugOptions
 
-        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneLocationViewTouched(sender:)))
-        self.addGestureRecognizer(touchGestureRecognizer)
+//        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneLocationViewTouched(sender:)))
+//        self.addGestureRecognizer(touchGestureRecognizer)
     }
 
     /// Resets the scene heading to 0

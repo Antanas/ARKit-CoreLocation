@@ -122,26 +122,27 @@ open class LocationNode: SCNNode {
 
         let adjustedDistance: CLLocationDistance
         if locationConfirmed && (distance > 100 || continuallyAdjustNodePositionWhenWithinRange || setup) {
-            if distance > 100 {
-                //If the item is too far away, bring it closer and scale it down
-                let scale = 100 / Float(distance)
-
-                adjustedDistance = distance * Double(scale)
-
-                let adjustedTranslation = SCNVector3( x: Float(locationTranslation.longitudeTranslation) * scale,
-                                                      y: Float(locationTranslation.altitudeTranslation) * scale,
-                                                      z: Float(locationTranslation.latitudeTranslation) * scale)
-                self.position = SCNVector3( x: position.x + adjustedTranslation.x,
-                                            y: position.y + adjustedTranslation.y,
-                                            z: position.z - adjustedTranslation.z)
-                self.scale = SCNVector3(x: scale, y: scale, z: scale)
-            } else {
+            //probably this code is causing deadlocks
+//            if distance > 100 {
+//                //If the item is too far away, bring it closer and scale it down
+//                let scale = 100 / Float(distance)
+//
+//                adjustedDistance = distance * Double(scale)
+//
+//                let adjustedTranslation = SCNVector3( x: Float(locationTranslation.longitudeTranslation) * scale,
+//                                                      y: Float(locationTranslation.altitudeTranslation) * scale,
+//                                                      z: Float(locationTranslation.latitudeTranslation) * scale)
+//                self.position = SCNVector3( x: position.x + adjustedTranslation.x,
+//                                            y: position.y + adjustedTranslation.y,
+//                                            z: position.z - adjustedTranslation.z)
+//                self.scale = SCNVector3(x: scale, y: scale, z: scale)
+//            } else {
                 adjustedDistance = distance
                 self.position = SCNVector3( x: position.x + Float(locationTranslation.longitudeTranslation),
                                             y: position.y + Float(locationTranslation.altitudeTranslation),
                                             z: position.z - Float(locationTranslation.latitudeTranslation))
                 self.scale = SCNVector3(x: 1, y: 1, z: 1)
-            }
+//            }
         } else {
             //Calculates distance based on the distance within the scene, as the location isn't yet confirmed
             //TODO: This yields zero, perhaps we should investigate
